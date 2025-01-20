@@ -1,0 +1,32 @@
+learning React-query or Tanstack-query.
+=> A server side state management library that used for data fetching, caching, etc... it is powerful tool that provide some extra functionalty and reduce the boiler plate code...;
+
+npm i @tanstack/react-query
+for latest  versioN of React v19 
+npm install --save-exact @types/react@^19.0.0 @types/react-dom@^19.0.0
+
+// Adding react-query in our project
+simpley go to main.tsx and do these two steps
+
+import {QueryClientProvider, QueryClient} from "@tanstack/react-query";
+const queryClient = new QueryClient(); // creating a instance of the query client
+
+<QueryClientProvider client={queryClient}>
+ <App/>
+</QueryClientProvider>
+
+definations:
+QueryClient: => it is main part of the library which manages the background data fetching, catching and other query related logic.
+
+QueryClientProvider: => it is component used to provide that instance to our application
+
+// useQuery() hook
+this is the main hook which used for fetching the data from the function withour need of any extra boilerplate code we simpley passisng the object to it and this return many thing which are handel by this hook like:
+data, isLoading, isError, isStale, isFetched, ect... 
+
+const {data} = useQuery({
+    queryKey : ["name"],       // make sure to give in array always
+    queryFn : getDataFunction, // here we give function refrence not caalling this;
+});
+
+// handeling isLoading and isError;
