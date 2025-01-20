@@ -14,7 +14,6 @@ const Old = () => {
     }
     useEffect(()=>{
         getData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
   return (
     <div className=" overflow-hidden w-full h-full overflow-y-scroll">

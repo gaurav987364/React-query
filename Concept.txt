@@ -29,4 +29,44 @@ const {data} = useQuery({
     queryFn : getDataFunction, // here we give function refrence not caalling this;
 });
 
-// handeling isLoading and isError;
+// handeling isLoading and isError and error;
+simpley hme useQuery hook built in isLoading, isError andother things provide krta hai us basis pe ham show kar skte hai loading and error handeling;
+
+isLoading and isError are the boolean values and hook provide one other thong called error which is actually that error.message jisko hm ui par show kar sakte hai;
+
+// installing React-query devtools;
+
+npm i @tanstack/react-query-devtools 
+
+hame install karne ke baad simple udhr hi jaha hamne initialization kiya tha queryClient ka udhar import kro devtools ko or app ke niche paste krdo component ko us wale thats it;
+
+// useMutation(); hook
+
+differnce b/w useQuery and useMutation hook :[
+    useQuery hook me ham data only fetch karte hai (Read opertaion) and loding and other things ko get krte hai for ui me show krne ke liye
+
+    useMutation hook ka use karke ham data ko create, update, delete kar skte hai (CUD) like server se baat chit krna data ko update krne ke liye;
+];
+
+
+// Garbage collection time (gcTime) or cache time and ( stale time );
+
+gcTime means ye vo time hai jiske baad data cache se clear ho jata hai. By default react-query data ko first time fetch karke cache karta hai fir next time agar data ya query same hai to dubara fecth nahi hoga cache se data de diya jayga ok gcTime ek time period hai jiske baad vo data garbage collection me chala jata hai. ye by default hai lekin ham stale time ka use karek khud se kisi query ya data ko particularly time de skat hai ki co kitne time tak cache me rahega ya fir itne time period ke baad dubara api se response ayga/fetch hoga; default time 5 min hota hai cache kaa;
+
+gcTime me cache ka data hi show krta hai jab tak time hai uska or koi update ni kiya ho but in network tab request har bar server ko krta hai to ye best practise nahi hai iska solution hai stale time
+
+
+//stale (expire) time 
+by default it is 0 but we can give an option for that in useQuery
+
+stale time me bar bar api request ko ham manage kar skte hai isko ese smjho ki hmne useQuery me stale time de diya 5 min 1000*60*5 ok, to ab first 5 time jab user us page par gya data fetch hua or vo ab fresh state me rahega 5 minute tak means user in 5 minute ke andar agar dubara is page par ayga to dubara api request nahi hogi lekin after 5 minute jab user ayga  tab stale me data ja chuka hoga means vo ab expire hogya hai or dubara api request hogi...
+
+
+// Polling in React-query 
+::=> jese ki zerodha, groww or any stokes websites or real time stoke updae hota hai to usme ek api ko regular interval par call kiya jaa rha hota hai without refresh tha whole website to hm us effect ko polling bolte hai ;
+
+def:=> in react-query polling is the technique of fetching the data from an api in regular interval of time without refreshing the whole website to keep the ui up to date and display the real time data;
+
+refetchinterval:1000 in useQuery (isko thik se use kro varna infinite loop hogi api calling ki.)
+
+refetchintervalinbackground:true (means ki agar ham us page se kisi or page par chale gye tab bhi background me data fecth hota rahega or ui-up-date hoga)

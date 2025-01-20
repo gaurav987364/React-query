@@ -9,7 +9,10 @@ const NewRQ = () => {
     const {data, isLoading, isError,error} = useQuery({
         queryKey:["users"],
         queryFn:getUsers,
-
+        // gcTime:1000*60*5, (garbage collection time for cache)
+        // staleTime: 20000, // 20 seconds
+        // refetchInterval: 1000, // 10 seconds
+        // refetchIntervalInBackground:true,
     });
   return (
     <div className=" w-full h-full flex justify-center p-2">
