@@ -10,3 +10,8 @@ export async function getUsers(){
     const result = await response.json();
     return result;
 };
+export async function getUsersInfo(id:number){
+    const response = await fetch(`${baseURL}/users/${id}`);
+    const result = await response.json();
+    return result;
+};

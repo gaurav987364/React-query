@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { getUsers } from "../api"
+import { Link } from "react-router-dom";
 
 interface User {
     id: number;
@@ -24,12 +25,16 @@ const NewRQ = () => {
         )}
         {!isLoading && data && (
             <div>
-                {data.map((user:User) => <div key={user.id} className=" border-b text-center">
-                {user.name}</div>)}
+                {data.map((user:User) => <Link key={user.id} to={`/detail/${user.id}`}
+                >
+                    <div  className=" border-b text-center">{user.name}
+                    </div>
+                </Link>
+                )}
             </div>
         )}   {/* Displaying users */}
     </div>
   )
 }
 
-export default NewRQ
+export default NewRQ;

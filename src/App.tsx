@@ -3,6 +3,7 @@ import MainLayout from "./layout/MainLayout"
 import Home from "./pages/Home"
 import Old from "./pages/Old"
 import NewRQ from "./pages/NewRQ"
+import Detail from "./pages/Detail"
 
 const router = createBrowserRouter(
   [
@@ -22,6 +23,10 @@ const router = createBrowserRouter(
           path:"/newRQ",
           element:<NewRQ/>
         },
+        {
+          path:"detail/:id",
+          element:<Detail/>
+        }
       ]
     }
   ]

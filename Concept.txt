@@ -69,4 +69,15 @@ def:=> in react-query polling is the technique of fetching the data from an api 
 
 refetchinterval:1000 in useQuery (isko thik se use kro varna infinite loop hogi api calling ki.)
 
-refetchintervalinbackground:true (means ki agar ham us page se kisi or page par chale gye tab bhi background me data fecth hota rahega or ui-up-date hoga)
+refetchintervalinbackground:true (means ki agar ham us page se kisi or page par chale gye tab bhi background me data fecth hota rahega or ui-up-date hoga);
+
+
+// query keys;
+ham query key jese dete hai uske sath wale argument ko jab dete hai to key multiple ho jati hai tab query keys bolte hai unhe unka bhaut important use hai , jese ki ham jis basis pe data fetch kar reh hai from function like id, name etc to usko query key me name ke sath dete hai use hota hai ye hai ki jab jab uski value (id,name) change hote hai tab tab data re-fecth hota haii; 
+
+ye value dena bhaut important hai jis se react-query useQuery me queryFn ko update karti hai kyuki jab jab ye chnage hogi tab tab data fetch hoga ,bhuat important hai isko dena 
+
+
+pagunation me useQuery me ek property hamesha use karo name hai 
+[placeHolderdata: keeppreviousdata,]
+ise hoga ye ki loading show nhi krega isme ab previous data ko rakhte hue next data ko add krdega ye.
