@@ -33,4 +33,4 @@ const Old = () => {
   )
 }
 
-export default Old
+export default Old;
