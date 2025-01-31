@@ -81,3 +81,6 @@ ye value dena bhaut important hai jis se react-query useQuery me queryFn ko upda
 pagination me useQuery me ek property hamesha use karo name hai 
 [placeHolderdata: keeppreviousdata,]
 ise hoga ye ki loading show nhi krega isme ab previous data ko rakhte hue next data ko add krdega ye....
+
+
+//Mutations in React-Query;
