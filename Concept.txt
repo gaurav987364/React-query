@@ -63,7 +63,7 @@ stale time me bar bar api request ko ham manage kar skte hai isko ese smjho ki h
 
 
 // Polling in React-query 
-::=> jese ki zerodha, groww or any stokes websites or real time stoke updae hota hai to usme ek api ko regular interval par call kiya jaa rha hota hai without refresh tha whole website to hm us effect ko polling bolte hai ;
+::=> jese ki zerodha, groww or any stokes websites or real time stoke update hota hai to usme ek api ko regular interval par call kiya jaa rha hota hai without refresh tha whole website to hm us effect ko polling bolte hai ;
 
 def:=> in react-query polling is the technique of fetching the data from an api in regular interval of time without refreshing the whole website to keep the ui up to date and display the real time data;
 
@@ -84,3 +84,60 @@ ise hoga ye ki loading show nhi krega isme ab previous data ko rakhte hue next d
 
 
 //Mutations in React-Query;
+useMutation(); hook is used for create,update and delete opertions performs over the data and we provide many options to them to perform actions.
+basiaclly client se server ko kuch bjnaaa...!
+
+//List of options are which are very usefull because inke bina ui par hm chijo ko reflect nahi kar skte:
+1.onSuccess =>  a mutation callback function that run when mutation is successful
+2.onError => a mutation callback function that run when mutation is fails
+3.onSettled => a mutation callback function that run regardless of fails or success
+4.mutationKey => a unique key identify the mutation in the cache.
+
+
+
+//Steps are :-
+1. we have to create actionMutationName variable like this :
+    const deleteMutation = useMutation({
+        mutationFn:(id:number)=> //call our own function for delete things based on that id;
+    });
+
+    //isme id:number wali receieve hori hai hme onclick se 
+    // our function me jo id bj rahe hai uske base par action perform kr reh hai.
+
+2. Now we have to do this on button onClick={()=> deleteMutation.mutate(id)};
+   //mutate ek function hai jo useMutation ke anadar wale mutationFn ko call krta hai.
+
+3. Now we have to create a new delete function so that we call that in useMutation;
+
+   const ourDeleteFunction = async ()=>{
+    await fetch(`baseUrl/users/${id}`,{
+        method: "delete",
+    })
+   };
+
+//***after doing above steps the data is delete from api but updates not reflect in the ui so for that we have to use our configuration options;
+ 
+ hame ek queryClient ka acces lene ke liye ek hook ka use krna hai taki hm cache se data clear kar sake;
+
+ const queryClient = useQueryClient();
+
+ onSuccess(data,id // jiske base par action perform krna hai){
+    queryClient.setQueryData(["users"], (elements)=>{
+        return elements?.filter((elem) => elem.id !== id)
+    })
+ };
+
+ //setQueryData is the function that takes two arguments one is our query key vahi wali jo data get krte time use ki thi , taki ab ham cache se data ko acces karke cler sake, and n=another argument is callback function jisme data ka array aaata hai uspar hm action lagate hai like filter etc...
+
+ upar jo hmne data liya hai vo vo wala data hai jo hm server action me ya hamare own function me body ke andar pass krte hai like
+
+  headers: {
+            'Content-Type': 'application/json',
+        },
+   body: JSON.stringify({
+            name: 'Gaurav Sharma.', // ye us data ke anadar milega agar hm chae to udahr isko de skte hai.
+        }),
+
+    queryClient.setQueryData(["users"], (allUsersData // we get all data from cache)=>{
+        return allUsersData?.map(user=> user.id === id ? {...user, {name : data.name}});
+    })

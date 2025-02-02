@@ -7,6 +7,7 @@ const Header = () => {
         <div className="flex items-center justify-around gap-3 text-sm font-semibold">
             <Link to="/old">Old</Link>
             <Link to="/newRQ">NewRQ</Link>
+            <Link to="infinitescroll">Infinite-Scroll</Link>
         </div>
     </div>
   )

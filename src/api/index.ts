@@ -15,3 +15,24 @@ export async function getUsersInfo(id:number){
     const result = await response.json();
     return result;
 };
+
+
+export async function deleteUserName(id:number){
+    await fetch(`${baseURL}/users/${id}`, {
+        method: 'DELETE',
+    });
+}
+
+export async function updateUserName(id:number){
+    await fetch(`${baseURL}/users/${id}`, {
+        method: 'PATCH', // or PATCH (pur for all data, patch for one user)
+    })
+};
+
+
+//Infinite scroll function;
+export const getInfiniteUsers = async ({pageParam = 1})=>{
+    const response = await fetch(`https://api.github.com/users?per_page=10&page=${pageParam}`);
+    const result = await response.json();
+    return result;
+}

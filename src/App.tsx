@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Old from "./pages/Old"
 import NewRQ from "./pages/NewRQ"
 import Detail from "./pages/Detail"
+import InfiniteScroll from "./pages/InfiniteScroll"
 
 const router = createBrowserRouter(
   [
@@ -26,6 +27,10 @@ const router = createBrowserRouter(
         {
           path:"detail/:id",
           element:<Detail/>
+        },
+        {
+          path:"/infinitescroll",
+          element:<InfiniteScroll/>
         }
       ]
     }
