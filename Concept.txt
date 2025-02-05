@@ -140,4 +140,7 @@ basiaclly client se server ko kuch bjnaaa...!
 
     queryClient.setQueryData(["users"], (allUsersData // we get all data from cache)=>{
         return allUsersData?.map(user=> user.id === id ? {...user, {name : data.name}});
-    })
+    });
+
+
+//More on React-Query;
