@@ -1,4 +1,6 @@
 const baseURL = `https://jsonplaceholder.typicode.com`;
+
+
 export async function getAlbums(){
     const response = await fetch(`${baseURL}/albums`);
     const result = await response.json();
@@ -21,7 +23,7 @@ export async function deleteUserName(id:number){
     await fetch(`${baseURL}/users/${id}`, {
         method: 'DELETE',
     });
-}
+};
 
 export async function updateUserName(id:number){
     await fetch(`${baseURL}/users/${id}`, {
@@ -35,4 +37,4 @@ export const getInfiniteUsers = async ({pageParam = 1})=>{
     const response = await fetch(`https://api.github.com/users?per_page=10&page=${pageParam}`);
     const result = await response.json();
     return result;
-}
+};
