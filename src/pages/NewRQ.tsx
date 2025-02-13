@@ -9,15 +9,18 @@ interface User {
 const NewRQ = () => {
     const queryClient = useQueryClient();
     
-    const {data, isLoading, isError,error} = useQuery({
+    const {data, isLoading, isError,error,refetch} = useQuery({
         queryKey:["users",],
         queryFn:getUsers,
         // gcTime:1000*60*5, (garbage collection time for cache)
         // staleTime: 20000, // 20 seconds
         // refetchInterval: 1000, // 10 seconds
         // refetchIntervalInBackground:true,
+        // suspense: true, // suspense means it will wait for the response before rendering the component
+        enabled: true,
     });
 
+    //refetch function is udes to fetch things again in another function me use kar skate hai iska 
     
     //! Mutations in React-Query;
     const {mutate:deleteMutations,
