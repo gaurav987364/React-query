@@ -14,23 +14,23 @@ const router = createBrowserRouter(
       children:[
         {
           path:"/",
-          element:<Home/>
+          element:<Home />
         },
         {
           path:"/old",
-          element:<Old/>
+          element:<Old />
         },
         {
           path:"/newRQ",
-          element:<NewRQ/>
+          element:<NewRQ />
         },
         {
           path:"detail/:id",
-          element:<Detail/>
+          element:<Detail />
         },
         {
           path:"/infinitescroll",
-          element:<InfiniteScroll/>
+          element:<InfiniteScroll />
         }
       ]
     }
