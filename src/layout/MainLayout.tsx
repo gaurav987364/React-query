@@ -10,7 +10,7 @@ const MainLayout = () => {
           <Outlet/>
         </main>
         <footer className=" w-full mx-auto ">
-          <p className=" text-center">2025 My Website. All rights reserved.</p>
+          <p className=" text-center">@2025 My Website. All rights reserved.</p>
         </footer>
     </div>
   )
