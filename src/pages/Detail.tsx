@@ -17,7 +17,7 @@ const Detail = () => {
     }
   return (
     <div className=' w-full h-full flex items-center justify-center flex-col'>
-        Detail of the User : {" "}
+        Detail of the User is : {" "}
         {isLoading ? (
             <div>Loading...</div>
         ) : (
